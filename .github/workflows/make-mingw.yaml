@@ -182,6 +182,7 @@ jobs:
           mkdir .build
           cd .build && ../configure \
             JAVA_HOME="" \
+            --enable-relocate-all \
             --disable-docs \
             ${{ matrix.extra-config-flags }}
 
