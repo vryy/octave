@@ -40,11 +40,8 @@ jobs:
             cxx: "clang++ -std=gnu++14"
             f77: flang
             # Clang seems to require a different set of dllexport attributes than GCC.
-            # autoconf and libtool still need help to correctly invoke flang.
             extra-config-flags:
               --disable-lib-visibility-flags
-              ac_cv_f77_compiler_gnu=yes
-              lt_cv_prog_gnu_ld=yes
             ccache-max: 400M
             # This configuration is not fully supported yet
             allow-error: true
