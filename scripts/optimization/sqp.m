@@ -117,11 +117,9 @@
 ##
 ## @end ifnottex
 ## The fifth and sixth arguments, @var{lb} and @var{ub}, contain lower and
-## upper bounds on @var{x}.  These must be consistent with the equality and
-## inequality constraints @var{g} and @var{h}.  If the arguments are vectors
-## then @var{x}(i) is bound by @var{lb}(i) and @var{ub}(i).  A bound can also
-## be a scalar in which case all elements of @var{x} will share the same
-## bound.
+## upper bounds on @var{x} and when provided must be vectors of the same size
+## as the the vector @var{x0}.  The bounds must be consistent with the
+## equality and inequality constraints @var{g} and @var{h}.
 ##
 ## The seventh argument @var{maxiter} specifies the maximum number of
 ## iterations.  The default value is 100.
