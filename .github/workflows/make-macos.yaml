@@ -146,6 +146,7 @@ jobs:
           echo gfortran --version
           gfortran --version
           mkdir .build
+          echo "::group::Run configure script"
           cd .build && ../configure \
             CXX="${CXX} ${{ matrix.cxx-compiler-flags }}" \
             F77="ccache gfortran" \
@@ -159,6 +160,10 @@ jobs:
             --with-blas="-L${HOMEBREW_PREFIX}/opt/openblas/lib -lopenblas" \
             --with-java-homedir="${HOMEBREW_PREFIX}/opt/openjdk" \
             --prefix="${HOME}/usr"
+          echo "::endgroup::"
+          echo "::group::Show config.log"
+          cat ./config.log
+          echo "::endgroup::"
 
       - name: build
         run: make -C ./.build all -j3 V=1

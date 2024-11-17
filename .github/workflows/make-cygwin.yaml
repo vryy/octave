@@ -172,6 +172,7 @@ jobs:
           echo $F77 --version
           $F77 --version
           mkdir .build
+          echo "::group::Run configure script"
           cd .build && ../configure \
             --libexecdir=/usr/lib \
             --enable-shared \
@@ -181,6 +182,10 @@ jobs:
             JAVA_HOME="" \
             EGREP="grep -E" \
             FLIBS="-lgfortran -lquadmath"
+          echo "::endgroup::"
+          echo "::group::Show config.log"
+          cat ./config.log
+          echo "::endgroup::"
 
       - name: build
         # Spawning processes seems to have a big overhead on this platform.  Use a somewhat larger number of parallel processes to compensate for that.
