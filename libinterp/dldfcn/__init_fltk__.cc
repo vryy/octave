@@ -32,7 +32,7 @@ To initialize:
 
 */
 
-// PKG_ADD: if (__have_feature__ ("FLTK") && __have_feature__ ("OPENGL") && have_window_system () && ! (ismac () && __event_manager_enabled__ ())) register_graphics_toolkit ("fltk"); endif
+// PKG_ADD: if (__have_feature__ ("FLTK") && __have_feature__ ("OPENGL") && have_window_system () && ! (ismac () && __is_multi_threaded__ ())) register_graphics_toolkit ("fltk"); endif
 
 #if defined (HAVE_CONFIG_H)
 #  include "config.h"
@@ -1296,8 +1296,8 @@ private:
         graphics_object robj = gh_mgr.get_object (m_fp.get_parent ());
 
         root_figure::properties& rp
-
           = dynamic_cast<root_figure::properties&> (robj.get_properties ());
+
         rp.set_currentfigure (m_fp.get___myhandle__ ().value ());
       }
   }
