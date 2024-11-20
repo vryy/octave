@@ -9691,10 +9691,6 @@ patch::properties::update_fvc ()
       return;
     }
 
-  bool pervertex = false;
-  if (ncv == nv)
-    pervertex = true;
-
   bool isRGB = false;
   if (cd.ndims () == 3)
     isRGB = true;
@@ -9710,6 +9706,10 @@ patch::properties::update_fvc ()
       yd = yd.as_column ();
       zd = zd.as_column ();
     }
+
+  bool pervertex = false;
+  if (ncv == nv)
+    pervertex = true;
 
   dv(0) = nv * nf;
   if (zd.isempty ())
