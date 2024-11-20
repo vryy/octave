@@ -763,7 +763,7 @@ x - y .* floor (x ./ y)
 @noindent
 and is written such that the correct modulus is returned for integer types.
 This function handles negative values correctly.  That is,
-@w{@code{mod (-1, 3)}} is 2, not -1, as @w{@code{rem (-1, 3)}} returns.
+@w{@code{mod (-1, 3)}}@ is 2, not -1, as @w{@code{rem (-1, 3)}}@ returns.
 
 An error results if the dimensions of the arguments do not agree, or if
 either of the arguments is complex.
@@ -2537,7 +2537,7 @@ DEFUN (permute, args, ,
 Return the generalized transpose for an N-D array object @var{A}.
 
 The permutation vector @var{perm} must contain the elements
-@w{@code{1:ndims (A)}} (in any order, but each element must appear only
+@w{@code{1:ndims (A)}}@ (in any order, but each element must appear only
 once).  The @var{N}th dimension of @var{A} gets remapped to dimension
 @code{@var{PERM}(@var{N})}.  For example:
 
@@ -3373,7 +3373,7 @@ DEFUN (isinteger, args, ,
 @deftypefn {} {@var{tf} =} isinteger (@var{x})
 Return true if @var{x} is an integer object (int8, uint8, int16, etc.).
 
-Note that @w{@code{isinteger (14)}} is false because numeric constants in
+Note that @w{@code{isinteger (14)}}@ is false because numeric constants in
 Octave are double precision floating point values.
 @seealso{isfloat, ischar, islogical, isstring, isnumeric, isa}
 @end deftypefn */)
@@ -3939,7 +3939,7 @@ DEFUN (isrow, args, ,
 Return true if @var{x} is a row vector.
 
 A row vector is a 2-D array of any type for which @code{size (@var{x})} returns
-@w{@code{[1, N]}} with non-negative N.
+@w{@code{[1, N]}}@ with non-negative N.
 @seealso{iscolumn, isscalar, isvector, ismatrix, size}
 @end deftypefn */)
 {
@@ -3988,7 +3988,7 @@ DEFUN (iscolumn, args, ,
 Return true if @var{x} is a column vector.
 
 A column vector is a 2-D array of any type for which @code{size (@var{x})}
-returns @w{@code{[N, 1]}} with non-negative N.
+returns @w{@code{[N, 1]}}@ with non-negative N.
 @seealso{isrow, isscalar, isvector, ismatrix, size}
 @end deftypefn */)
 {
@@ -4037,7 +4037,7 @@ DEFUN (ismatrix, args, ,
 Return true if @var{x} is a 2-D array.
 
 A matrix is an array of any type where @code{ndims (@var{x}) == 2} and for
-which @code{size (@var{x})} returns @w{@code{[M, N]}} with non-negative M and
+which @code{size (@var{x})} returns @w{@code{[M, N]}}@ with non-negative M and
 N.
 @seealso{isscalar, isvector, iscell, isstruct, issparse, isa}
 @end deftypefn */)
@@ -4086,7 +4086,7 @@ DEFUN (issquare, args, ,
 Return true if @var{x} is a 2-D square array.
 
 A square array is a 2-D array of any type for which @code{size (@var{x})}
-returns @w{@code{[N, N]}} where N is a non-negative integer.
+returns @w{@code{[N, N]}}@ where N is a non-negative integer.
 @seealso{isscalar, isvector, ismatrix, size}
 @end deftypefn */)
 {
@@ -6142,7 +6142,7 @@ DEFUN (norm, args, ,
 @deftypefnx {} {@var{n} =} norm (@var{A}, @var{p}, @var{opt})
 Compute the p-norm of the matrix @var{A}.
 
-If the second argument is not given, @w{@code{p = 2}} is used.
+If the second argument is not given, @w{@code{p = 2}}@ is used.
 
 If @var{A} is a matrix (or sparse matrix):
 
@@ -6400,7 +6400,7 @@ This function is equivalent to the operator syntax @w{@code{! @var{x}}}.
 DEFUN (uplus, args, ,
        doc: /* -*- texinfo -*-
 @deftypefn {} {@var{B} =} uplus (@var{A})
-This function and @w{@tcode{+ @var{A}}} are equivalent.
+This function and @w{@tcode{+ @var{A}}}@ are equivalent.
 @seealso{uminus, plus}
 @end deftypefn */)
 {
@@ -6410,7 +6410,7 @@ This function and @w{@tcode{+ @var{A}}} are equivalent.
 DEFUN (uminus, args, ,
        doc: /* -*- texinfo -*-
 @deftypefn {} {@var{B} =} uminus (@var{A})
-This function and @w{@tcode{- @var{A}}} are equivalent.
+This function and @w{@tcode{- @var{A}}}@ are equivalent.
 @seealso{uplus, minus}
 @end deftypefn */)
 {
@@ -6422,7 +6422,7 @@ DEFUN (transpose, args, ,
 @deftypefn {} {@var{B} =} transpose (@var{A})
 Return the transpose of @var{A}.
 
-This function and @tcode{@var{A}.'@:} are equivalent.
+This function and @tcode{@var{A}.'@:}@ are equivalent.
 @seealso{ctranspose}
 @end deftypefn */)
 {
@@ -6454,7 +6454,7 @@ DEFUN (ctranspose, args, ,
 @deftypefn {} {@var{B} =} ctranspose (@var{A})
 Return the complex conjugate transpose of @var{A}.
 
-This function and @tcode{@var{A}'} are equivalent.
+This function and @tcode{@var{A}'}@ are equivalent.
 @seealso{transpose}
 @end deftypefn */)
 {
@@ -6520,7 +6520,7 @@ DEFUN (plus, args, ,
        doc: /* -*- texinfo -*-
 @deftypefn  {} {@var{C} =} plus (@var{A}, @var{B})
 @deftypefnx {} {@var{C} =} plus (@var{A1}, @var{A2}, @dots{})
-This function and @w{@tcode{@var{A} + @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} + @var{B}}}@ are equivalent.
 
 If more arguments are given, the summation is applied
 cumulatively from left to right:
@@ -6550,7 +6550,7 @@ cumulatively from left to right:
 DEFUN (minus, args, ,
        doc: /* -*- texinfo -*-
 @deftypefn {} {@var{C} =} minus (@var{A}, @var{B})
-This function and @w{@tcode{@var{A} - @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} - @var{B}}}@ are equivalent.
 @seealso{plus, uminus}
 @end deftypefn */)
 {
@@ -6563,7 +6563,7 @@ DEFUN (mtimes, args, ,
 @deftypefnx {} {@var{C} =} mtimes (@var{A1}, @var{A2}, @dots{})
 Return the matrix multiplication product of inputs.
 
-This function and @w{@tcode{@var{A} * @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} * @var{B}}}@ are equivalent.
 If more arguments are given, the multiplication is applied
 cumulatively from left to right:
 
@@ -6583,7 +6583,7 @@ DEFUN (mrdivide, args, ,
 @deftypefn {} {@var{C} =} mrdivide (@var{A}, @var{B})
 Return the matrix right division of @var{A} and @var{B}.
 
-This function and @w{@tcode{@var{A} / @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} / @var{B}}}@ are equivalent.
 
 If the system is not square, or if the coefficient matrix is singular, a
 minimum norm solution is computed.
@@ -6598,7 +6598,7 @@ DEFUN (mpower, args, ,
 @deftypefn {} {@var{C} =} mpower (@var{A}, @var{B})
 Return the matrix power operation of @var{A} raised to the @var{B} power.
 
-This function and @w{@tcode{@var{A} ^ @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} ^ @var{B}}}@ are equivalent.
 @seealso{power, mtimes, plus, minus}
 @end deftypefn */)
 {
@@ -6610,7 +6610,7 @@ DEFUN (mldivide, args, ,
 @deftypefn {} {@var{C} =} mldivide (@var{A}, @var{B})
 Return the matrix left division of @var{A} and @var{B}.
 
-This function and @w{@tcode{@var{A} @backslashchar{} @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} @backslashchar{} @var{B}}}@ are equivalent.
 
 If the system is not square, or if the coefficient matrix is singular, a
 minimum norm solution is computed.
@@ -6690,7 +6690,7 @@ DEFUN (times, args, ,
 @deftypefnx {} {@var{C} =} times (@var{A1}, @var{A2}, @dots{})
 Return the element-by-element multiplication product of inputs.
 
-This function and @w{@tcode{@var{A} .* @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} .* @var{B}}}@ are equivalent.
 If more arguments are given, the multiplication is applied
 cumulatively from left to right:
 
@@ -6710,7 +6710,7 @@ DEFUN (rdivide, args, ,
 @deftypefn {} {@var{C} =} rdivide (@var{A}, @var{B})
 Return the element-by-element right division of @var{A} and @var{B}.
 
-This function and @w{@tcode{@var{A} ./ @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} ./ @var{B}}}@ are equivalent.
 @seealso{ldivide, mrdivide, times, plus}
 @end deftypefn */)
 {
@@ -6723,7 +6723,7 @@ DEFUN (power, args, ,
 Return the element-by-element operation of @var{A} raised to the
 @var{B} power.
 
-This function and @w{@tcode{@var{A} .^ @var{B}}} are equivalent.
+This function and @w{@tcode{@var{A} .^ @var{B}}}@ are equivalent.
 
 If several complex results are possible, returns the one with smallest
 non-negative argument (angle).  Use @code{realpow}, @code{realsqrt},
@@ -6740,7 +6740,7 @@ DEFUN (ldivide, args, ,
 @deftypefn {} {@var{C} =} ldivide (@var{A}, @var{B})
 Return the element-by-element left division of @var{A} and @var{B}.
 
-This function and @w{@tcode{@var{A} .@backslashchar{} @var{B}}} are
+This function and @w{@tcode{@var{A} .@backslashchar{} @var{B}}}@ are
 equivalent.
 @seealso{rdivide, mldivide, times, plus}
 @end deftypefn */)
@@ -6798,7 +6798,7 @@ Return the result of the colon expression corresponding to @var{base},
 @var{limit}, and optionally, @var{increment}.
 
 This function is equivalent to the operator syntax
-@w{@code{@var{base} : @var{limit}}} or
+@w{@code{@var{base} : @var{limit}}}@ or
 @w{@code{@var{base} : @var{increment} : @var{limit}}}.
 @seealso{linspace}
 @end deftypefn */)
@@ -7027,7 +7027,7 @@ For equal elements, the indices are such that equal elements are listed
 in the order in which they appeared in the original list.
 
 Sorting of complex entries is done first by magnitude
-(@w{@code{abs (@var{z})}}) and for any ties by phase angle
+(@w{@code{abs (@var{z})}})@ and for any ties by phase angle
 (@w{@code{angle (z)}}).  For example:
 
 @example
@@ -7559,7 +7559,7 @@ not given.
 
 Programming Note: nth_element encapsulates the C++ standard library
 algorithms nth_element and partial_sort.  On average, the complexity of the
-operation is O(M*log(K)), where @w{@code{M = size (@var{x}, @var{dim})}} and
+operation is O(M*log(K)), where @w{@code{M = size (@var{x}, @var{dim})}}@ and
 @w{@code{K = length (@var{n})}}.  This function is intended for cases where
 the ratio K/M is small; otherwise, it may be better to use @code{sort}.
 @seealso{sort, min, max}
@@ -8255,7 +8255,7 @@ DEFUN (diff, args, ,
 @deftypefn  {} {@var{y} =} diff (@var{x})
 @deftypefnx {} {@var{y} =} diff (@var{x}, @var{k})
 @deftypefnx {} {@var{y} =} diff (@var{x}, @var{k}, @var{dim})
-If @var{x} is a vector of length @math{n}, @w{@code{diff (@var{x})}} is the
+If @var{x} is a vector of length @math{n}, @w{@code{diff (@var{x})}}@ is the
 vector of first differences
 @tex
  $x_2 - x_1, \ldots{}, x_n - x_{n-1}$.
@@ -8264,7 +8264,7 @@ vector of first differences
  @var{x}(2) - @var{x}(1), @dots{}, @var{x}(n) - @var{x}(n-1).
 @end ifnottex
 
-If @var{x} is a matrix, @w{@code{diff (@var{x})}} is the matrix of column
+If @var{x} is a matrix, @w{@code{diff (@var{x})}}@ is the matrix of column
 differences along the first non-singleton dimension.
 
 The second argument is optional.  If supplied,
@@ -8277,7 +8277,7 @@ non-singleton dimension.
 The dimension along which to take the difference can be explicitly
 stated with the optional variable @var{dim}.  In this case the
 @var{k}-th order differences are calculated along this dimension.
-In the case where @var{k} exceeds @w{@code{size (@var{x}, @var{dim})}}
+In the case where @var{k} exceeds @w{@code{size (@var{x}, @var{dim})}}@ 
 an empty matrix is returned.
 @seealso{sort, merge}
 @end deftypefn */)

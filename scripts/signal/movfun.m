@@ -96,8 +96,8 @@
 ## data array are deleted.  For example, with a 10-element data vector and a
 ## window of length 3, the output will contain only 8 elements.  The first
 ## element would require calculating the function over indices
-## @w{@code{[0, 1, 2]}} and is therefore discarded.  The last element would
-## require calculating the function over indices @w{@code{[9, 10, 11]}} and is
+## @w{@code{[0, 1, 2]}}@ and is therefore discarded.  The last element would
+## require calculating the function over indices @w{@code{[9, 10, 11]}}@ and is
 ## therefore discarded.
 ##
 ## @item @qcode{"fill"}

@@ -31,7 +31,7 @@
 ## Numerically evaluate the integral of points @var{y} using the trapezoidal
 ## method.
 ##
-## @w{@code{trapz (@var{y})}} computes the integral of @var{y} along the first
+## @w{@code{trapz (@var{y})}}@ computes the integral of @var{y} along the first
 ## non-singleton dimension.  When the argument @var{x} is omitted an equally
 ## spaced @var{x} vector with unit spacing (1) is assumed.
 ## @code{trapz (@var{x}, @var{y})} evaluates the integral with respect to the

@@ -58,7 +58,7 @@
 ## If the first argument is a vector, @var{set}, then generate all
 ## combinations of the elements of @var{set}, taken @var{k} at a time, with
 ## one row per combination.  The result @var{c} has @var{k} columns and
-## @w{@code{nchoosek (length (@var{set}), @var{k})}} rows.
+## @w{@code{nchoosek (length (@var{set}), @var{k})}}@ rows.
 ##
 ## For example:
 ##

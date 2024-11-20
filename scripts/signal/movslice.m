@@ -33,11 +33,11 @@
 ##
 ## The moving window length input @var{wlen} can either be a scalar not equal
 ## to 1 or a 2-element array of integers.  For scalar values, if odd the window
-## is symmetric and includes @w{@code{(@var{wlen} - 1) / 2}} elements on either
-## side of the central element.  If @var{wlen} is even the window is asymmetric
-## and has @w{@code{@var{wlen}/2}} elements to the left of the central element
-## and @w{@code{@var{wlen}/2 - 1}} elements to the right of the central
-## element.  When @var{wlen} is a 2-element array,
+## is symmetric and includes @w{@code{(@var{wlen} - 1) / 2}}@ elements on
+## either side of the central element.  If @var{wlen} is even the window is
+## asymmetric and has @w{@code{@var{wlen}/2}}@ elements to the left of the
+## central element and @w{@code{@var{wlen}/2 - 1}}@ elements to the right of
+## the central element.  When @var{wlen} is a 2-element array,
 ## @w{@code{[@var{nb}, @var{na}]}}, the window includes @var{nb} elements to
 ## the left of the current element and @var{na} elements to the right of the
 ## current element.
@@ -45,7 +45,7 @@
 ## The output @var{slcidx} is an array of indices of the slices that fit fully
 ## within the vector, where each column is an individual slice as the window
 ## moves from left to right.  The slices have @var{wlen} elements for scalar
-## @var{wlen}, or @w{@code{@var{nb} + @var{na} + 1}} elements for array valued
+## @var{wlen}, or @w{@code{@var{nb} + @var{na} + 1}}@ elements for array valued
 ## @var{wlen}.
 ##
 ## Optional output @var{C} is an row vector of window center positions where

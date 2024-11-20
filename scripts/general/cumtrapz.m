@@ -30,7 +30,7 @@
 ## Cumulative numerical integration of points @var{y} using the trapezoidal
 ## method.
 ##
-## @w{@code{cumtrapz (@var{y})}} computes the cumulative integral of @var{y}
+## @w{@code{cumtrapz (@var{y})}}@ computes the cumulative integral of @var{y}
 ## along the first non-singleton dimension.  Where @code{trapz} reports only
 ## the overall integral sum, @code{cumtrapz} reports the current partial sum
 ## value at each point of @var{y}.

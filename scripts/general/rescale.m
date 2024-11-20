@@ -40,7 +40,7 @@
 ## the specified value @var{inmin} with @var{inmin}.  Similarly, the optional
 ## input @qcode{"inputmax"} replaces all elements greater than the specified
 ## value @var{inmax} with @var{inmax}.  If unspecified the minimum and maximum
-## are taken from the data itself (@w{@code{@var{inmin} = min (A(:))}} and
+## are taken from the data itself (@w{@code{@var{inmin} = min (A(:))}}@ and
 ## @w{@code{@var{inmax} = max (A(:))}}).
 ##
 ## Programming Notes:

@@ -37,7 +37,7 @@
 ## @var{fcn} is a function handle, inline function, or string containing the
 ## name of the function to evaluate.
 ##
-## The limits of the plot are of the form @w{@code{[@var{xlo}, @var{xhi}]}} or
+## The limits of the plot are of the form @w{@code{[@var{xlo}, @var{xhi}]}}@ or
 ## @w{@code{[@var{xlo}, @var{xhi}, @var{ylo}, @var{yhi}]}}.  If no limits
 ## are specified the default is @code{[-5, 5]}.
 ##

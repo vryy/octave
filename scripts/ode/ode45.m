@@ -65,7 +65,7 @@
 ## field @var{x} containing a row vector of times where the solution was
 ## evaluated and a field @var{y} containing the solution matrix such that each
 ## column corresponds to a time in @var{x}.  Use
-## @w{@code{fieldnames (@var{solution})}} to see the other fields and
+## @w{@code{fieldnames (@var{solution})}}@ to see the other fields and
 ## additional information returned.
 ##
 ## If no output arguments are requested, and no @qcode{"OutputFcn"} is

@@ -30,7 +30,7 @@
 ## Return a sparse identity matrix of size @var{m}x@var{n}.
 ##
 ## The implementation is significantly more efficient than
-## @w{@code{sparse (eye (@var{m}))}} as the full matrix is not constructed.
+## @w{@code{sparse (eye (@var{m}))}}@ as the full matrix is not constructed.
 ##
 ## When called with a single argument, a square matrix of size
 ## @var{m}-by-@var{m} is created.  If called with a single vector argument,
