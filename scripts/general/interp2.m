@@ -38,7 +38,7 @@
 ## @var{x}, @var{y} can be matrices, as returned by @code{meshgrid}, in which
 ## case the sizes of @var{x}, @var{y}, and @var{z} must be equal.  If @var{x},
 ## @var{y} are vectors describing a grid then
-## @w{@code{length (@var{x}) == columns (@var{z})}} and
+## @w{@code{length (@var{x}) == columns (@var{z})}}@ and
 ## @w{@code{length (@var{y}) == rows (@var{z})}}.  In either case the input
 ## data must be strictly monotonic.
 ##

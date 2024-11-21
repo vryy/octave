@@ -32,7 +32,7 @@
 ##
 ## The size @var{n} must be of the form @math{2^k * p} in which p is one of
 ## 1, 12, 20 or 28.  The returned matrix is normalized, meaning
-## @w{@code{Hn(:,1) == 1}} and @w{@code{Hn(1,:) == 1}}.
+## @w{@code{Hn(:,1) == 1}}@ and @w{@code{Hn(1,:) == 1}}.
 ##
 ## Some of the properties of Hadamard matrices are:
 ##
