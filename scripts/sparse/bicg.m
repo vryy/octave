@@ -34,8 +34,9 @@
 ## @deftypefnx {} {@var{x} =} bicg (@var{A}, @var{b}, @var{tol}, @var{maxit}, @var{M}, [], @var{x0}, @dots{})
 ## @deftypefnx {} {@var{x} =} bicg (@var{A}, @var{b}, @var{tol}, @var{maxit}, @var{M1}, @var{M2}, @var{x0}, @dots{})
 ## @deftypefnx {} {[@var{x}, @var{flag}, @var{relres}, @var{iter}, @var{resvec}] =} bicg (@var{A}, @var{b}, @dots{})
-## Solve the linear system of equations @w{@code{@var{A} * @var{x} = @var{b}}}@ 
-## by means of the Bi-Conjugate Gradient iterative method.
+## Solve the linear system of equations
+## @w{@code{@var{A} * @var{x} = @var{b}}}@ by means of the Bi-Conjugate
+## Gradient iterative method.
 ##
 ## The input arguments are:
 ##
@@ -65,8 +66,9 @@
 ## @var{M1}, @var{M2} are the preconditioners.  The preconditioner @var{M} is
 ## given as @code{@var{M} = @var{M1} * @var{M2}}.  Both @var{M1} and @var{M2}
 ## can be passed as a matrix or as a function handle or inline function
-## @code{g} such that @w{@code{g (@var{x}, "notransp") = @var{M1} \ @var{x}}}@ 
-## or @w{@code{g (@var{x}, "notransp") = @var{M2} \ @var{x}}}@ and
+## @code{g} such that
+## @w{@code{g (@var{x}, "notransp") = @var{M1} \ @var{x}}}@ or
+## @w{@code{g (@var{x}, "notransp") = @var{M2} \ @var{x}}}@ and
 ## @w{@code{g (@var{x}, "transp") = @var{M1}' \ @var{x}}}@ or
 ## @w{@code{g (@var{x}, "transp") = @var{M2}' \ @var{x}}}.
 ## If @var{M1} is omitted or empty, then preconditioning is not applied.

@@ -30,8 +30,8 @@
 ## The root graphics object is the ultimate parent of all graphics objects.
 ##
 ## In addition, the root object contains information about the graphics
-## system as a whole such as the @code{ScreenSize}.  Use @w{@code{get (groot)}}
-## to find out what information is available.
+## system as a whole such as the @code{ScreenSize}.  Use
+## @w{@code{get (groot)}}@ to find out what information is available.
 ##
 ## Defaults for the graphic system as a whole are specified by setting
 ## properties of the root graphics object that begin with @qcode{"Default"}.

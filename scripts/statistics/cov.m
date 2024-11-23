@@ -52,7 +52,7 @@
 ## If called with one argument, compute @code{cov (@var{x}, @var{x})}.  If
 ## @var{x} is a vector, this is the scalar variance of @var{x}.  If @var{x} is
 ## a matrix, each row of @var{x} is treated as an observation, and each column
-## as a variable, and the @w{(@var{i}, @var{j})-th} entry of
+## as a variable, and the @w{(@var{i}, @var{j})-th}@ entry of
 ## @code{cov (@var{x})} is the covariance between the @var{i}-th and
 ## @var{j}-th columns in @var{x}.  If @var{x} has dimensions n x m, the output
 ## @var{c} will be a m x m square covariance matrix.

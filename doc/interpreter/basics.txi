@@ -123,8 +123,8 @@ Print short help message and exit.
 Add path to the head of the search path for images.  The value of
 @var{path} specified on the command line will override any value of
 @w{@env{OCTAVE_IMAGE_PATH}}@ found in the environment, but not any commands
-in the system or user startup files that call the @w{@env{IMAGE_PATH}}@
-function.
+in the system or user startup files that call the
+@w{@env{IMAGE_PATH}}@ function.
 
 @item --info-file @var{filename}
 @cindex @sortas{options, Octave command --info-file} @ @ @code{--info-file @var{filename}}
@@ -355,8 +355,8 @@ overridden by the environment variable @w{@env{OCTAVE_VERSION_INITFILE}}.
 @item @var{config-dir}/octave/octaverc
 @cindex personal startup file
 where @code{@var{config-dir}} is the platform-dependent location for user
-local configuration files (e.g., @w{@env{$XDG_CONFIG_HOME}} on many Unix-like
-operating systems or @w{@env{%APPDATA%}} on Windows).
+local configuration files (e.g., @w{@env{$XDG_CONFIG_HOME}}@ on many Unix-like
+operating systems or @w{@env{%APPDATA%}}@ on Windows).
 
 @item ~/.octaverc
 @cindex personal startup file

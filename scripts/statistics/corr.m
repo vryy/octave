@@ -29,7 +29,7 @@
 ## Compute matrix of correlation coefficients.
 ##
 ## If each row of @var{x} and @var{y} is an observation and each column is
-## a variable, then the @w{(@var{i}, @var{j})-th} entry of
+## a variable, then the @w{(@var{i}, @var{j})-th}@ entry of
 ## @code{corr (@var{x}, @var{y})} is the correlation between the
 ## @var{i}-th variable in @var{x} and the @var{j}-th variable in @var{y}.
 ## @var{x} and @var{y} must have the same number of rows (observations).

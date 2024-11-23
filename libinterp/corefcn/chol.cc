@@ -807,8 +807,8 @@ original factored matrix.
 Given a Cholesky@tie{}factorization of a real symmetric or complex Hermitian
 positive definite matrix @w{@var{A} = @var{R}'*@var{R}}, @var{R}@tie{}upper
 triangular, return the Cholesky@tie{}factorization of
-@var{A1}, where @w{A1(p,p) = A}, @w{A1(:,j) = A1(j,:)' = u} and
-@w{p = [1:j-1,j+1:n+1]}.  @w{u(j)} should be positive.
+@var{A1}, where @w{A1(p,p) = A}, @w{A1(:,j) = A1(j,:)' = u}@ and
+@w{p = [1:j-1,j+1:n+1]}.  @w{u(j)}@ should be positive.
 
 On return, @var{info} is set to
 
@@ -1186,7 +1186,7 @@ original factored matrix.
 Given a Cholesky@tie{}factorization of a real symmetric or complex Hermitian
 positive definite matrix @w{@var{A} = @var{R}'*@var{R}}, @var{R}@tie{}upper
 triangular, return the Cholesky@tie{}factorization of
-@w{@var{A}(p,p)}, where @w{p} is the permutation @*
+@w{@var{A}(p,p)}, where p is the permutation @*
 @code{p = [1:i-1, shift(i:j, 1), j+1:n]} if @w{@var{i} < @var{j}} @*
  or @*
 @code{p = [1:j-1, shift(j:i,-1), i+1:n]} if @w{@var{j} < @var{i}}.  @*
