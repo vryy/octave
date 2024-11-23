@@ -580,7 +580,7 @@ page.  The position @code{[left bottom]} defines the lower left corner of the \
 figure on the page, and the size is defined by @code{[width height]}.  For \
 output formats not implicitly rendered on paper, @code{width} and \
 @code{height} define the size of the image and the position information is \
-ignored.  __modemsg__.";
+ignored.  __modemsg__";
         s.valid = valid_4elvec;
         s.category = "Printing/Saving";
 
@@ -649,7 +649,7 @@ and width and height of the figure.  \
 
       case "renderer"
         s.doc = "Rendering engine used for printing when @code{renderermode} \
-is @qcode{\"manual\"}.  __modemsg__.";
+is @qcode{\"manual\"}.  __modemsg__";
         s.category = "Printing/Saving";
 
       case "renderermode"
@@ -823,7 +823,7 @@ box is drawn or only the 3 @qcode{\"back\"} axes.";
 
       case "cameraposition"
         s.doc = "Coordinates of the camera position viewing the \
-__objname__.  __modemsg__.";
+__objname__.  __modemsg__";
         s.valid = valid_3elvec;
         s.category = "Camera and View Controls";
 
@@ -836,7 +836,7 @@ manually set with the \
 
       case "cameratarget"
         s.doc = "Coordinates of the point at which the viewing camera is \
-aimed.  __modemsg__.";
+aimed.  __modemsg__";
         s.valid = valid_3elvec;
         s.category = "Camera and View Controls";
 
@@ -850,7 +850,7 @@ automatically positioned at the center of the axes plot area.";
       case "cameraupvector"
         s.doc = "A 3-element vector defining the upward direction of the \
 current view.  Note that the default is [0 1 0] for 2-D plots and [0 0 1] for \
-3-D plots.  __modemsg__.";
+3-D plots.  __modemsg__";
         s.valid = valid_3elvec;
         s.category = "Camera and View Controls";
 
@@ -863,7 +863,7 @@ used to change the vector from the 2-D or 3-D default values.";
 
       case "cameraviewangle"
         s.doc = "The camera's field of view defined as an angle between 0 \
-and 180 degrees.  __modemsg__.";
+and 180 degrees.  __modemsg__";
         s.valid = "scalar";
         s.category = "Camera and View Controls";
 
@@ -877,7 +877,7 @@ or automatically set by Octave to include all visible objects.";
       case "clim"
         s.doc = "Define limits for the color axis of __objname__ \
 children that have the @qcode{cdata} property.  \
-__modemsg__.";
+__modemsg__";
         s.valid = valid_2elvec;
         s.category = "Color and Transparency";
 
@@ -942,7 +942,7 @@ perpendicular to the screen.";
 displayed in the axes.  Setting @code{dataaspectratio} to \
 @w{@code{[1, 2]}} causes the length of one unit as displayed on the x-axis \
 to be the same as the length of 2 units on the y-axis.  \
-@xref{XREFdaspect, , daspect function}.  __modemsg__.";
+@xref{XREFdaspect, , daspect function}.  __modemsg__";
         s.valid = valid_3elvec;
         s.category = "Axes Box Appearance";
 
@@ -964,7 +964,7 @@ fit the data in the current view.";
         s.category = "Text Appearance";
 
       case "fontsize"
-        s.doc = [doc_fontsize, "  __modemsg__."];
+        s.doc = [doc_fontsize, "  __modemsg__"];
         s.valid = "scalar";
         s.category = "Text Appearance";
 
@@ -997,7 +997,7 @@ anti-aliased.";
 
       case "gridcolor"
         s.doc = "Color of the major grid lines.  \
-@xref{Colors, , colorspec}.  __modemsg__.";
+@xref{Colors, , colorspec}.  __modemsg__";
         s.valid = packopt ({markdef(valid_color), "@qcode{\"none\"}"});
         s.category = "Axes Grid Appearance";
 
@@ -1070,7 +1070,7 @@ be used by Axes-child objects.";
 
       case "minorgridcolor"
         s.doc = "Color of the minor grid lines.  \
-@xref{Colors, , colorspec}.  __modemsg__.";
+@xref{Colors, , colorspec}.  __modemsg__";
         s.valid = packopt ({markdef(valid_color), "@qcode{\"none\"}"});
         s.category = "Axes Grid Appearance";
 
@@ -1119,7 +1119,7 @@ height to be 0.4 and 0.5 respectively.  \
         s.category = "Object Position";
 
       case "plotboxaspectratio"
-        s.doc = "@xref{XREFpbaspect, , pbaspect function}.  __modemsg__.";
+        s.doc = "@xref{XREFpbaspect, , pbaspect function}.  __modemsg__";
         s.category = "Object Position";
 
       case "plotboxaspectratiomode"
@@ -1172,7 +1172,7 @@ adjustment");
         s.doc = "Control whether axes tick marks project @qcode{\"in\"} to \
 the plot box or @qcode{\"out\"}.  The value @qcode{\"both\"} will draw tick \
 marks both in and out.  The value @qcode{\"none\"} means no tick marks will \
-be drawn, although tick labels will still be rendered.  __modemsg__.  Note \
+be drawn, although tick labels will still be rendered.  __modemsg__  Note \
 that the default is @qcode{\"in\"} for 2-D and @qcode{\"out\"} for 3-D \
 plots.";
         s.category = "Axes Box Appearance";
@@ -1246,7 +1246,7 @@ the viewpoint for three-dimensional plots.";
 
       case "xcolor"
         s.doc = "Color of the x-axis.  @xref{Colors, , colorspec}.  \
-__modemsg__.";
+__modemsg__";
         s.valid = packopt ({markdef(valid_color), "@qcode{\"none\"}"});
         s.category = "Axes Box Appearance";
 
@@ -1276,7 +1276,7 @@ right in default 2-D and 3-D views.";
 
       case "xlim"
         s.doc = "Two-element vector @code{[xmin xmax]} specifying the limits \
-for the x-axis.  __modemsg__.   @xref{XREFxlim, , @w{xlim function}}.";
+for the x-axis.  __modemsg__   @xref{XREFxlim, , @w{xlim function}}.";
         s.valid = valid_2elvec;
         s.category = "Axes Box Appearance";
 
@@ -1310,13 +1310,13 @@ or automatically set to span the plotted data according to the \
         s.category = "Axes Grid Appearance";
 
       case "xtick"
-        s.doc = "Position of x tick marks.  __modemsg__.";
+        s.doc = "Position of x tick marks.  __modemsg__";
         s.valid = "vector";
         s.printdefault = false;
         s.category = "Axes Box Appearance";
 
       case "xticklabel"
-        s.doc = "Labels of x tick marks.  __modemsg__.";
+        s.doc = "Labels of x tick marks.  __modemsg__";
         s.valid = valid_cellstring;
         s.category = "Text Appearance";
 
@@ -1375,7 +1375,7 @@ to top in 2-D and front to back in 3-D default views.";
 
       case "ylim"
         s.doc = "Two-element vector @code{[ymin ymax]} specifying the limits \
-for the y-axis.  __modemsg__.  @xref{XREFylim, , @w{ylim function}}.";
+for the y-axis.  __modemsg__  @xref{XREFylim, , @w{ylim function}}.";
         s.valid = valid_2elvec;
         s.category = "Axes Box Appearance";
 
@@ -1409,13 +1409,13 @@ or automatically set to span the plotted data according to the \
         s.category = "Axes Grid Appearance";
 
       case "ytick"
-        s.doc = "Position of y tick marks.  __modemsg__.";
+        s.doc = "Position of y tick marks.  __modemsg__";
         s.valid = "vector";
         s.printdefault = false;
         s.category = "Axes Box Appearance";
 
       case "yticklabel"
-        s.doc = "Labels of y tick marks.  __modemsg__.";
+        s.doc = "Labels of y tick marks.  __modemsg__";
         s.valid = valid_cellstring;
         s.category = "Text Appearance";
 
@@ -1470,7 +1470,7 @@ to top in default 3-D views.";
 
       case "zlim"
         s.doc = "Two-element vector @code{[zmin zmax]} specifying the limits \
-for the z-axis.  __modemsg__.  @xref{XREFzlim, , @w{zlim function}}.";
+for the z-axis.  __modemsg__  @xref{XREFzlim, , @w{zlim function}}.";
         s.valid = valid_2elvec;
         s.category = "Axes Box Appearance";
 
@@ -1504,13 +1504,13 @@ or automatically set to span the plotted data according to the \
         s.category = "Axes Grid Appearance";
 
       case "ztick"
-        s.doc = "Position of z tick marks.  __modemsg__.";
+        s.doc = "Position of z tick marks.  __modemsg__";
         s.valid = "vector";
         s.printdefault = false;
         s.category = "Axes Box Appearance";
 
       case "zticklabel"
-        s.doc = "Labels of z tick marks.  __modemsg__.";
+        s.doc = "Labels of z tick marks.  __modemsg__";
         s.valid = valid_cellstring;
         s.category = "Text Appearance";
 
@@ -1596,7 +1596,7 @@ plot (rand (30));\n\
 legend (\"numcolumns\", 3);\n\
 @end group\n\
 @end example\n\
-__modemsg__.";
+__modemsg__";
         s.valid = "scalar integer";
         s.category = "Layout";
 
