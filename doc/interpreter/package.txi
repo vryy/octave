@@ -245,8 +245,8 @@ autoload ('bar', which ('foo'));
 @end example
 
 @noindent
-@xref{PKG_ADD and PKG_DEL Directives}, for details on @w{@code{PKG_ADD}}@
-directives.
+@xref{PKG_ADD and PKG_DEL Directives}, for details on
+@w{@code{PKG_ADD}}@ directives.
 
 @cindex PKG_DEL
 @anchor{XREFPKG_DEL}
@@ -255,8 +255,8 @@ An optional file that includes commands that are run when the package
 is removed from the users path.  Note that @w{@code{PKG_DEL}}@ directives in
 the source code of the package will also be added to this file by the
 Octave package manager.
-@xref{PKG_ADD and PKG_DEL Directives}, for details on @w{@code{PKG_DEL}}@
-directives.
+@xref{PKG_ADD and PKG_DEL Directives}, for details on
+@w{@code{PKG_DEL}}@ directives.
 
 @item package/pre_install.m
 This is an optional function that is run prior to the installation of a

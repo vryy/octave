@@ -261,7 +261,7 @@ data(idx)
 
 @noindent
 Instead of creating the @code{idx} array it is possible to replace
-@code{data(idx)} with @w{@code{data( data <= 2 )}} in the above code.
+@code{data(idx)} with @w{@code{data( data <= 2 )}}@ in the above code.
 
 While the size of the logical index expressions is usually the same as that
 of the array being indexed, this is not a necessary condition.  If the logical
@@ -375,7 +375,7 @@ the respective dimension of the array.
 However, if the number of indexing components exceeds the number of dimensions
 (@w{@code{M > nd}}) then the excess components must all be singletons
 (@code{1}).  Moreover, if @w{@code{M < nd}}, the behavior is equivalent to
-reshaping the input object so as to merge the trailing @w{@code{nd - M}}
+reshaping the input object so as to merge the trailing @w{@code{nd - M}}@ 
 dimensions into the last index dimension @code{M}.  Thus, the result will have
 the dimensionality of the index expression, and not the original object.  This
 is the case whenever dimensionality of the index is greater than one

@@ -30,7 +30,7 @@
 ## Solve the linear system @code{A*x = b}.
 ##
 ## With no options, this function is equivalent to the left division operator
-## @w{(@code{x = A \ b})} or the matrix-left-divide function
+## @w{(@code{x = A \ b})}@ or the matrix-left-divide function
 ## @w{(@code{x = mldivide (A, b)})}.
 ##
 ## Octave ordinarily examines the properties of the matrix @var{A} and chooses

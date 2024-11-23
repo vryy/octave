@@ -54,8 +54,8 @@
 ## @item besselh
 ## Compute Hankel functions of the first (@var{k} = 1) or second (@var{k} = 2)
 ## kind.  If the argument @var{opt} is supplied, the result is multiplied by
-## @w{@code{exp (-I*@var{x})}}@ for @var{k} = 1 or @w{@code{exp (I*@var{x})}}@ 
-## for @var{k} = 2.
+## @w{@code{exp (-I*@var{x})}}@ for @var{k} = 1 or
+## @w{@code{exp (I*@var{x})}}@ for @var{k} = 2.
 ## @end table
 ##
 ## If @var{alpha} is a scalar, the result is the same size as @var{x}.  If

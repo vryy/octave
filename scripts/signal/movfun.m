@@ -44,11 +44,11 @@
 ## computation along dimension 1, i.e., down the columns of the array.
 ##
 ## When applied to an array (possibly multi-dimensional) with @var{n} columns,
-## @var{fcn} may return a result in either of two formats: @w{Format 1)}
-## an array of size 1-by-@var{n}-by-@var{dim3}-by-@dots{}-by-@var{dimN}.  This
+## @var{fcn} may return a result in either of two formats: @w{Format 1)}@ an
+## array of size 1-by-@var{n}-by-@var{dim3}-by-@dots{}-by-@var{dimN}.  This
 ## is the typical output format from Octave core functions.  Type
 ## @code{demo ("movfun", 5)} for an example of this use case.
-## @w{Format 2)} a row vector of length
+## @w{Format 2)}@ a row vector of length
 ## @code{@var{n} * @var{numel_higher_dims}} where @var{numel_higher_dims} is
 ## @w{@code{prod (size (@var{x})(3:end))}}.  The output of @var{fcn} for the
 ## i-th input column must be found in the output at indices

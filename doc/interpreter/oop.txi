@@ -771,8 +771,8 @@ f.polynomial = 1 + 2 * X + 3 * X ^ 2
 @end group
 @end example
 
-Defining the @w{FIRfilter} class as a child of the polynomial class implies
-that a @w{FIRfilter} object may be used any place that a polynomial object may
+Defining the @w{FIRfilter}@ class as a child of the polynomial class implies
+that a @w{FIRfilter}@ object may be used any place that a polynomial object may
 be used.  This is not a normal use of a filter.  It may be a more sensible
 design approach to use aggregation rather than inheritance.  In this case, the
 polynomial is simply a field in the class structure.  A class constructor for

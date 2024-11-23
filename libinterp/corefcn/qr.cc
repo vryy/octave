@@ -1470,7 +1470,7 @@ vector to be inserted into @var{A} (if @var{orient} is @qcode{"row"}).
 The default value of @var{orient} is @qcode{"col"}.  If @var{orient} is
 @qcode{"col"}, @var{u} may be a matrix and @var{j} an index vector
 resulting in the QR@tie{}factorization of a matrix @var{B} such that
-@w{B(:,@var{j})} gives @var{u} and @w{B(:,@var{j}) = []} gives @var{A}.
+@w{B(:,@var{j})}@ gives @var{u} and @w{B(:,@var{j}) = []}@ gives @var{A}.
 Notice that the latter case is done as a sequence of k insertions;
 thus, for k large enough, it will be both faster and more accurate to
 recompute the factorization from scratch.
@@ -1677,7 +1677,7 @@ The default value of @var{orient} is @qcode{"col"}.
 
 If @var{orient} is @qcode{"col"}, @var{j} may be an index vector
 resulting in the QR@tie{}factorization of a matrix @var{B} such that
-@w{A(:,@var{j}) = []} gives @var{B}.  Notice that the latter case is done as
+@w{A(:,@var{j}) = []}@ gives @var{B}.  Notice that the latter case is done as
 a sequence of k deletions; thus, for k large enough, it will be both faster
 and more accurate to recompute the factorization from scratch.
 

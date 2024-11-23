@@ -54,7 +54,7 @@
 ## The optional argument @var{flag} controls which normalization is used.
 ## If @var{flag} is equal to 1 (default value, used when @var{flag} is omitted
 ## or empty), return the sample kurtosis as defined above.  If @var{flag} is
-## equal to 0, return the @w{"bias-corrected"} kurtosis coefficient instead:
+## equal to 0, return the @w{"bias-corrected"}@ kurtosis coefficient instead:
 ## @tex
 ## $$
 ## \kappa_0 = 3 + {\scriptstyle N - 1 \over \scriptstyle (N - 2)(N - 3)} \,
