@@ -2189,8 +2189,7 @@ tree_evaluator::source_file (const std::string& file_name,
             error (ee, "source: error sourcing file '%s'",
                    file_full_name.c_str ());
           else
-            error (ee, "source: error sourcing file '%s': %s",
-                   file_full_name.c_str (), error_message.c_str ());
+            error (ee, "%s", error_message.c_str ());
         }
     }
 
