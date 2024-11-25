@@ -101,11 +101,12 @@ function [retval, status] = __makeinfo__ (text, output_type = "plain text", fsee
   endif
   ## Texinfo crashes if @end tex does not appear first on the line.
   text = regexprep (text, '^ +@end tex', '@end tex', 'lineanchors');
-  ## Replace @seealso with Octave specific @xseealso macro, and escape '@'
-  [s, e] = regexp (text, '@seealso{[^}]*}');
+  ## Replace @seealso with Octave specific @xseealso macro.
+  ## Also escape '@' to '@@' for Texinfo, unless '@\' pattern used.
+  [s, e] = regexp (text, '@seealso{(?:.|\\})*}');
   cum_rep = 0;
   for (i_match = 1:numel (s))
-    esc_text = strrep (text(((s(i_match)+8:e(i_match))+i_match-1)+cum_rep), '@', '@@');
+    esc_text = regexprep (text(((s(i_match)+8:e(i_match))+i_match-1)+cum_rep), '@(?!\\)', '@@');
     text = [text(1:s(i_match)+i_match+cum_rep-1), 'xseealso', esc_text, ...
             text(e(i_match)+1+i_match+cum_rep-1:end)];
     cum_rep += numel (esc_text) - (e(i_match)-(s(i_match)+8)+1);
@@ -113,9 +114,9 @@ function [retval, status] = __makeinfo__ (text, output_type = "plain text", fsee
 
   ## We don't want *ref macros to clutter plain text output with "Note ..."
   if (strcmp (output_type, "plain text"))
-    text  = regexprep (text, '@ref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', '$1');
-    text  = regexprep (text, '@xref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', 'See $1');
-    text  = regexprep (text, '@pxref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', 'see $1');
+    text = regexprep (text, '@ref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', '$1');
+    text = regexprep (text, '@xref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', 'See $1');
+    text = regexprep (text, '@pxref{(?:[^}]*?),?(?:XREF)?([^,}]+)}', 'see $1');
   endif
 
   file = texi_macros_file ();
