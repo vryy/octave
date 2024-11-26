@@ -299,6 +299,9 @@ public:
   virtual bool gui_running () const { return false; }
   virtual void gui_running (bool) { }
 
+  // TRUE if Octave uses multiple threads (e.g., for interpreter and GUI).
+  virtual bool multi_threaded () const { return false; }
+
   void program_invocation_name (const std::string& nm)
   { m_program_invocation_name = nm; }
 
@@ -330,6 +333,11 @@ public:
   static bool is_gui_running ()
   {
     return s_instance ? s_instance->gui_running () : false;
+  }
+
+  static bool is_multi_threaded ()
+  {
+    return s_instance ? s_instance->multi_threaded () : false;
   }
 
   // Convenience functions.

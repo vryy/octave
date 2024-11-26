@@ -68,6 +68,8 @@ public:
   bool gui_running () const { return m_gui_running; }
   void gui_running (bool arg) { m_gui_running = arg; }
 
+  bool multi_threaded () const { return true; }
+
 private:
 
   // If TRUE, the GUI should be started.

@@ -466,6 +466,27 @@ Return true if Octave is running in GUI mode and false otherwise.
 %!error <Invalid call> isguirunning (1)
 */
 
+DEFUN (__is_multi_threaded__, args, ,
+       doc: /* -*- texinfo -*-
+@deftypefn {} {@var{tf} =} __is_multi_threaded__ ()
+Return true if Octave is running with multiple threads.
+@seealso{isguirunning}
+@end deftypefn */)
+{
+  if (args.length () != 0)
+    print_usage ();
+
+  // FIXME: This isn't quite right, it just says that we intended to
+  // start the GUI, not that it is actually running.
+
+  return ovl (application::is_multi_threaded ());
+}
+
+/*
+%!assert (islogical (__is_multi_threaded__ ()))
+%!error <Invalid call> __is_multi_threaded__ (1)
+*/
+
 DEFUN (argv, args, ,
        doc: /* -*- texinfo -*-
 @deftypefn {} {@var{args} =} argv ()
