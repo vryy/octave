@@ -62,6 +62,11 @@ function s = hdl2struct (h)
         ## Check for polar plots with special "polar_grid" object
         ## FIXME: A hack to fix bug #62093.
         kids = [kids; findall(h, "tag", "polar_grid")];
+
+        ## Add legend markers which are normally hidden
+        if (strcmp (s.properties.tag, "legend"))
+          kids = [kids; findall(h, "-depth", 1, "type", "line", "-property", "markertruesize")];
+        endif
       endif
 
       nkids = length (kids);
