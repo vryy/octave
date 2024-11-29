@@ -348,9 +348,15 @@ load_path::set (const std::string& p, bool warn, bool is_init)
 
   // FIXME: Shouldn't the test for add_hook be outside the for loop?
   //        Why not use const here?  Does add_hook change dir_info_list?
+  // FIXME: We should be able to assume that the current directory is always
+  //        the first element in the list.  When we assume C++20 or later,
+  //        consider replacing the range-based loop with:
+  //            for (auto& di : m_dir_info_list | std::views::drop (1))
+  //        Then, the string comparison inside the loop could be dropped.
   for (auto& di : m_dir_info_list)
     {
-      if (m_add_hook)
+      // execute PKG_ADD script (but not in the current directory)
+      if (m_add_hook && di.dir_name.compare ("."))
         m_add_hook (di.dir_name);
     }
 
@@ -1122,7 +1128,7 @@ load_path::add (const std::string& dir_arg, bool at_end, bool warn)
 
           add (di, at_end);
 
-          if (m_add_hook)
+          if (m_add_hook && di.dir_name.compare ("."))
             m_add_hook (dir);
         }
 
