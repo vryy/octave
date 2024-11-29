@@ -30,10 +30,14 @@ Summary of bugs fixed for version 9.3.0 (tbd):
   properties to match redrawn plot (bug #65671).
 - Tick mark labels are now correctly updated after changing x or y data for
   `bar` and `barh` plots (bug #65734).
+- `hdl2struct.m`: Fix missing legend markers (bug #65904).
+- Enable FLTK graphics toolkit on macOS if not multi-threaded (bug #66482).
+- Do not execute PKG_ADD script in current directory (bug #66477).
 
 ### GUI
 
 - Update Brazilian Portugese translation file (bug #66337).
+- Fix some missing white spaces in documentation viewer (bug #66459).
 
 ### Build system / Tests
 
@@ -43,6 +47,7 @@ Summary of bugs fixed for version 9.3.0 (tbd):
   `movstd`, `movsum`, `movvar`: Add BISTs for general function operation.
 - `interp2`, `interp3`, `interpn`: Add more tests for non-numeric inputs
   (bug #66086).
+- Update formatting of movXXX functions.
 
 ### Documentation
 
@@ -50,6 +55,10 @@ Summary of bugs fixed for version 9.3.0 (tbd):
 - `interp2`, `interp3`, `interpn`: Specify that inputs need to be numeric
   (bug #66086).
 - `error`: Document the `ID` argument (bug #66015).
+- `sqp`: Clarify size requirements of input arguments `lb` and `ub`
+  (bug #66421).
+- Eliminate double period at end of "mode" graphics property documentation.
+- Fix makeinfo errors for comment block keywords (bug #66428).
 
 
 Summary of bugs fixed for version 9.2.0 (2024-06-01):
