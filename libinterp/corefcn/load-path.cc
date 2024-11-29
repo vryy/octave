@@ -343,25 +343,27 @@ load_path::set (const std::string& p, bool warn, bool is_init)
   for (const auto& elt : elts)
     append (elt, warn);
 
+  // Always prepend current directory.
+  prepend (".", warn);
+
   // Restore add hook and execute for all newly added directories.
   frame.run_first ();
 
-  // FIXME: Shouldn't the test for add_hook be outside the for loop?
-  //        Why not use const here?  Does add_hook change dir_info_list?
-  // FIXME: We should be able to assume that the current directory is always
-  //        the first element in the list.  When we assume C++20 or later,
-  //        consider replacing the range-based loop with:
-  //            for (auto& di : m_dir_info_list | std::views::drop (1))
-  //        Then, the string comparison inside the loop could be dropped.
-  for (auto& di : m_dir_info_list)
+  if (m_add_hook)
     {
-      // execute PKG_ADD script (but not in the current directory)
-      if (m_add_hook && di.dir_name.compare ("."))
-        m_add_hook (di.dir_name);
+      // FIXME: Why not use const here?  Does add_hook change dir_info_list?
+      // FIXME: We should be able to assume that the current directory is
+      //        always the first element in the list.  When we assume C++20 or
+      //        later, consider replacing the range-based loop with:
+      //            for (auto& di : m_dir_info_list | std::views::drop (1))
+      //        Then, the string comparison inside the loop could be dropped.
+      for (auto& di : m_dir_info_list)
+        {
+          // execute PKG_ADD script (but not in the current directory)
+          if (di.dir_name.compare ("."))
+            m_add_hook (di.dir_name);
+        }
     }
-
-  // Always prepend current directory.
-  prepend (".", warn);
 }
 
 void
@@ -1136,7 +1138,8 @@ load_path::add (const std::string& dir_arg, bool at_end, bool warn)
         warning ("addpath: %s: %s", dir_arg.c_str (), msg.c_str ());
     }
 
-  // FIXME: is there a better way to do this?
+  // FIXME: Is there a better way to keep "." at the front of the various lists
+  //        that are kept with information about the load path?
 
   i = find_dir_info (".");
 
