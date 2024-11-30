@@ -269,10 +269,27 @@ function hg = __quiver__ (varargin)
     endif
 
     if (is3d)
-      h2 = plot3 ([xarrw1.'; xend.'; xarrw2.'; NaN(1, length (x))](:),
-                  [yarrw1.'; yend.'; yarrw2.'; NaN(1, length (y))](:),
-                  [zarrw1.'; zend.'; zarrw2.'; NaN(1, length (z))](:),
-                  "linestyle", ls, "color", lc, "parent", hg);
+      %% fix the the arrow head missing problem, as reported in https://savannah.gnu.org/bugs/?47185
+
+      xarrw3=xarrw1; yarrw3=yarrw2;
+      xarrw4=xarrw2; yarrw4=yarrw1;
+      nans2=NaN(1,2*length(xend));
+      xarrw13=[xarrw1(:); xarrw3(:)];
+      xarrw24=[xarrw2(:); xarrw4(:)];
+      yarrw13=[yarrw1(:); yarrw3(:)];
+      yarrw24=[yarrw2(:); yarrw4(:)];
+      zarrw13=[zarrw1(:); zarrw1(:)];
+      zarrw24=[zarrw2(:); zarrw2(:)];
+      xend11=[xend(:); xend(:)];
+      yend11=[yend(:); yend(:)];
+      zend11=[zend(:); zend(:)];
+
+
+      h2 = plot3 ( ...
+                   [xarrw13(:), xend11(:),  xarrw24(:), nans2(:)]' ,
+                   [yarrw13(:), yend11(:),  yarrw24(:), nans2(:)]' ,
+                   [zarrw13(:), zend11(:),  zarrw24(:), nans2(:)]' ,
+                   "linestyle", ls, "color", lc, "parent", hg);
     else
       h2 = plot ([xarrw1.'; xend.'; xarrw2.'; NaN(1, length (x))](:),
                  [yarrw1.'; yend.'; yarrw2.'; NaN(1, length (y))](:),
