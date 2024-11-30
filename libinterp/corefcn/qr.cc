@@ -115,10 +115,10 @@ DEFUN (qr, args, nargout,
 @deftypefnx {} {@var{R} =} qr (@var{A})  # sparse A
 @deftypefnx {} {@var{X} =} qr (@var{A}, @var{B}) # sparse A
 @deftypefnx {} {[@var{C}, @var{R}] =} qr (@var{A}, @var{B})
-@deftypefnx {} {[@dots{}] =} qr (@dots{}, 0)
 @deftypefnx {} {[@dots{}] =} qr (@dots{}, "econ")
 @deftypefnx {} {[@dots{}] =} qr (@dots{}, "vector")
 @deftypefnx {} {[@dots{}] =} qr (@dots{}, "matrix")
+@deftypefnx {} {[@dots{}] =} qr (@dots{}, 0)
 @cindex QR factorization
 Compute the QR@tie{}factorization of @var{A}, using standard @sc{lapack}
 subroutines.
@@ -238,7 +238,7 @@ recommended to request only one return value @var{R}.  In that case, the
 computation avoids the construction of @var{Q} and returns a sparse @var{R}
 such that @code{@var{R} = chol (@var{A}' * @var{A})}.
 
-If @var{A} is dense, an additional matrix @var{B} is supplied and two
+If @var{A} is dense, an additional input matrix @var{B} is supplied, and two
 return values are requested, then @code{qr} returns @var{C}, where
 @code{@var{C} = @var{Q}' * @var{B}}.  This allows the least squares
 approximation of @code{@var{A} \ @var{B}} to be calculated as
@@ -271,14 +271,17 @@ matrix.  In this case, the defining relationship is:
 The default, however, is to return a permutation matrix and this may be
 explicitly specified by using a final argument of @qcode{"matrix"}.
 
-If the final argument is the scalar 0 or the string @qcode{"econ"}, an economy
+When the optional argument is the string @qcode{"econ"}, an economy
 factorization is returned.  If the original matrix @var{A} has size
 @nospell{MxN} and M > N, then the economy factorization will calculate just N
 rows in @var{R} and N columns in @var{Q} and omit the zeros in @var{R}.  If M
 @leq{} N, there is no difference between the economy and standard
-factorizations.  When calculating an economy factorization and @var{A} is
-dense, the output @var{P} is always a vector rather than a matrix.  If @var{A}
-is sparse, output @var{P} is a sparse permutation matrix.
+factorizations.
+
+If the optional argument is the numeric value 0 then @code{qr} acts as if
+the @qcode{"econ"} and @qcode{"vector"} arguments were both given.
+@strong{Warning:} This syntax is accepted, but no longer recommended and may
+be removed in the future.  Use @qcode{"econ"} instead.
 
 Background: The QR factorization has applications in the solution of least
 squares problems
@@ -315,6 +318,9 @@ orthogonal basis of @code{span (A)}.
   if (nargin < 1 || nargin > 3)
     print_usage ();
 
+  if (nargout > 3)
+    error ("qr: too many output arguments");
+
   octave_value_list retval;
 
   octave_value arg = args(0);
@@ -335,6 +341,7 @@ orthogonal basis of @code{span (A)}.
           if (val == 0)
             {
               economy = true;
+              vector_p = true;
               have_b = (nargin > 2);
             }
           else if (nargin == 3)   // argument 3 should be 0 or a string
@@ -343,21 +350,20 @@ orthogonal basis of @code{span (A)}.
       else if (args(nargin-1).is_string ())
         {
           std::string str = args(nargin-1).string_value ();
-          if (str == "vector")
+          if (str == "econ")
+            economy = true;
+          else if (str == "vector")
             vector_p = true;
-          else if (str == "econ")
-            {
-              economy = true;
-              have_b = (nargin > 2);
-            }
           else if (str != "matrix")
-            error ("qr: option string must be 'econ' or 'matrix' or " \
-                   "'vector', not \"%s\"", str.c_str ());
+            error ("qr: option string must be 'econ' or 'matrix' or 'vector', not \"%s\"", str.c_str ());
           have_b = (nargin > 2);
         }
-      else if (! args(nargin-1).is_matrix_type ())
+      else if (! args(nargin-1).isnumeric ())
         err_wrong_type_arg ("qr", args(nargin-1));
       else if (nargin == 3)   // should be caught by is_scalar_type or is_string
+        print_usage ();
+
+      if (have_b && ! args(1).isnumeric ())
         print_usage ();
 
       if (have_b && args(1).iscomplex ())
@@ -366,9 +372,6 @@ orthogonal basis of @code{span (A)}.
 
   if (arg.issparse ())
     {
-      if (nargout > 3)
-        error ("qr: too many output arguments");
-
       if (is_cmplx)
         {
           if (have_b && nargout == 1)
@@ -399,8 +402,6 @@ orthogonal basis of @code{span (A)}.
                           <SparseMatrix, SparseComplexMatrix>
                           (arg.sparse_complex_matrix_value (),
                            args(1).sparse_matrix_value (), info));
-              else
-                error ("qr: b is not valid");
             }
           else if (have_b && nargout == 2)
             {
@@ -415,7 +416,7 @@ orthogonal basis of @code{span (A)}.
               q (arg.sparse_complex_matrix_value ());
               if (vector_p)
                 retval = ovl (q.C (args(1).complex_matrix_value (), economy),
-                              q.R (economy), q.E ());
+                              q.R (economy), q.E ().transpose ());
               else
                 retval = ovl (q.C (args(1).complex_matrix_value (), economy),
                               q.R (economy), q.E_MAT ());
@@ -427,7 +428,8 @@ orthogonal basis of @code{span (A)}.
                   math::sparse_qr<SparseComplexMatrix>
                   q (arg.sparse_complex_matrix_value ());
                   if (vector_p)
-                    retval = ovl (q.Q (economy), q.R (economy), q.E ());
+                    retval = ovl (q.Q (economy), q.R (economy),
+                                  q.E ().transpose ());
                   else
                     retval = ovl (q.Q (economy), q.R (economy),
                                   q.E_MAT ());
@@ -472,8 +474,6 @@ orthogonal basis of @code{span (A)}.
                               (arg.sparse_matrix_value (),
                                args(1).sparse_complex_matrix_value (),
                                info));
-              else
-                error ("qr: b is not valid");
             }
           else if (have_b && nargout == 2)
             {
@@ -488,7 +488,7 @@ orthogonal basis of @code{span (A)}.
               q (arg.sparse_matrix_value ());
               if (vector_p)
                 retval = ovl (q.C (args(1).matrix_value (), economy),
-                              q.R (economy), q.E ());
+                              q.R (economy), q.E ().transpose ());
               else
                 retval = ovl (q.C (args(1).matrix_value (), economy),
                               q.R (economy), q.E_MAT ());
@@ -501,7 +501,8 @@ orthogonal basis of @code{span (A)}.
                   math::sparse_qr<SparseMatrix>
                   q (arg.sparse_matrix_value ());
                   if (vector_p)
-                    retval = ovl (q.Q (economy), q.R (economy), q.E ());
+                    retval = ovl (q.Q (economy), q.R (economy),
+                                  q.E ().transpose ());
                   else
                     retval = ovl (q.Q (economy), q.R (economy),
                                   q.E_MAT ());
@@ -524,7 +525,7 @@ orthogonal basis of @code{span (A)}.
   else
     {
       if (have_b && nargout > 2)
-        error ("qr: too many output arguments for dense A with B");
+        error ("qr: too many output arguments when called with A and B");
 
       if (arg.is_single_type ())
         {
@@ -565,7 +566,7 @@ orthogonal basis of @code{span (A)}.
                   {
                     math::qrp<FloatMatrix> fact (m, type);
 
-                    if (economy || vector_p)
+                    if (vector_p)
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.Pvec ());
                     else
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.P ());
@@ -603,7 +604,7 @@ orthogonal basis of @code{span (A)}.
                 default:
                   {
                     math::qrp<FloatComplexMatrix> fact (m, type);
-                    if (economy || vector_p)
+                    if (vector_p)
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.Pvec ());
                     else
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.P ());
@@ -616,8 +617,7 @@ orthogonal basis of @code{span (A)}.
         {
           if (arg.isreal ())
             {
-              math::qr<Matrix>::type type
-                = qr_type<Matrix> (nargout, economy);
+              math::qr<Matrix>::type type = qr_type<Matrix> (nargout, economy);
 
               Matrix m = arg.matrix_value ();
 
@@ -650,7 +650,7 @@ orthogonal basis of @code{span (A)}.
                 default:
                   {
                     math::qrp<Matrix> fact (m, type);
-                    if (economy || vector_p)
+                    if (vector_p)
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.Pvec ());
                     else
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.P ());
@@ -688,7 +688,7 @@ orthogonal basis of @code{span (A)}.
                 default:
                   {
                     math::qrp<ComplexMatrix> fact (m, type);
-                    if (economy || vector_p)
+                    if (vector_p)
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.Pvec ());
                     else
                       retval = ovl (fact.Q (), get_qr_r (fact), fact.P ());
@@ -709,8 +709,8 @@ orthogonal basis of @code{span (A)}.
 %! a = [0, 2, 1; 2, 1, 2];
 %!
 %! [q, r] = qr (a);
-%! [qe, re] = qr (a, 0);
-%! [qe2, re2] = qr (a, "econ");
+%! [qe, re] = qr (a, "econ");
+%! [qe2, re2] = qr (a, 0);
 %!
 %! assert (q * r, a, sqrt (eps));
 %! assert (qe * re, a, sqrt (eps));
@@ -720,19 +720,19 @@ orthogonal basis of @code{span (A)}.
 %! a = [0, 2, 1; 2, 1, 2];
 %!
 %! [q, r, p] = qr (a);  # FIXME: not giving right dimensions.
-%! [qe, re, pe] = qr (a, 0);
-%! [qe2, re2, pe2] = qr (a, "econ");
+%! [qe, re, pe] = qr (a, "econ");
+%! [qe2, re2, pe2] = qr (a, 0);
 %!
 %! assert (q * r, a * p, sqrt (eps));
-%! assert (qe * re, a(:, pe), sqrt (eps));
+%! assert (qe * re, a * pe, sqrt (eps));
 %! assert (qe2 * re2, a(:, pe2), sqrt (eps));
 
 %!test
 %! a = [0, 2; 2, 1; 1, 2];
 %!
 %! [q, r] = qr (a);
-%! [qe, re] = qr (a, 0);
-%! [qe2, re2] = qr (a, "econ");
+%! [qe, re] = qr (a, "econ");
+%! [qe2, re2] = qr (a, 0);
 %!
 %! assert (q * r, a, sqrt (eps));
 %! assert (qe * re, a, sqrt (eps));
@@ -742,11 +742,11 @@ orthogonal basis of @code{span (A)}.
 %! a = [0, 2; 2, 1; 1, 2];
 %!
 %! [q, r, p] = qr (a);
-%! [qe, re, pe] = qr (a, 0);
-%! [qe2, re2, pe2] = qr (a, "econ");
+%! [qe, re, pe] = qr (a, "econ");
+%! [qe2, re2, pe2] = qr (a, 0);
 %!
 %! assert (q * r, a * p, sqrt (eps));
-%! assert (qe * re, a(:, pe), sqrt (eps));
+%! assert (qe * re, a * pe, sqrt (eps));
 %! assert (qe2 * re2, a(:, pe2), sqrt (eps));
 
 %!test
@@ -800,14 +800,35 @@ orthogonal basis of @code{span (A)}.
 %! assert (qr (sparse (1, 0)), sparse (1, 0))
 %! assert (qr (sparse (0, 1)), sparse (0, 1))
 
-%!error qr ()
-%!error qr ([1, 2; 3, 4], 0, 2)
+%!test <*66488>
+%! ## Orientation of 'p' output
+%! [q, r, p] = qr (eye (3));
+%! assert (size (p), [3, 3]);
+%! [q, r, p] = qr (speye (3));
+%! assert (size (p), [3, 3]);
+%! [q, r, p] = qr (eye (3), 'vector');
+%! assert (size (p), [1, 3]);
+%! [q, r, p] = qr (speye (3), 'vector');
+%! assert (size (p), [1, 3]);
+%! [q, r, p] = qr (eye (3), 'econ');
+%! assert (size (p), [3, 3]);
+%! [q, r, p] = qr (speye (3), 'econ');
+%! assert (size (p), [3, 3]);
+%! [q, r, p] = qr (eye (3), 0);
+%! assert (size (p), [1, 3]);
+%! [q, r, p] = qr (speye (3), 0);
+%! assert (size (p), [1, 3]);
+
+## Test input validation
+%!error <Invalid call> qr ()
+%!error <Invalid call> qr (1,2,3,4)
+%!error <too many output arguments> [a,b,c,d] = qr (1)
 %!error <option string must be .*, not "foo"> qr (magic (3), "foo")
-%!error <option string must be .*, not "foo"> qr (magic (3), rand (3, 1), "foo")
-%!error <too many output arguments for dense A with B>
-%! [q, r, p] = qr (rand (3, 2), rand (3, 1));
-%!error <too many output arguments for dense A with B>
-%! [q, r, p] = qr (rand (3, 2), rand (3, 1), 0);
+%!error <option string must be .*, not "foo"> qr (magic (3), ones (3, 1), "foo")
+%!error <too many output arguments when called with A and B>
+%! [q, r, p] = qr (ones (3, 2), ones (3, 1));
+%!error <too many output arguments when called with A and B>
+%! [q, r, p] = qr (ones (3, 2), ones (3, 1), 0);
 
 %!function retval = __testqr (q, r, a, p)
 %!  tol = 100* eps (class (q));
